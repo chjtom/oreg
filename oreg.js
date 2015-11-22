@@ -1,19 +1,19 @@
 WidgetCollection = new Mongo.Collection('widget');
+
 if (Meteor.isClient) {
-  Template.widget.events({
-    'click button.createWidget': function(event, template) {
-      WidgetCollection.insert({
-        size: 'tanga'
-      });
-      console.log('addding tange');
-      $('body').append("<div class='widget'>New widget</div>");
-    },
-    'click button.pumbanolla': function(event) {
-      WidgetCollection.insert({
-        size: 'pumbanölla'
-      });
-      console.log('addding po,');
+  angular.module('oreg', ['angular-meteor']);
+  angular.module('oreg').controller('oregCtrl', ['$scope', '$meteor', function($scope, $meteor) {
+    $scope.underwear = $meteor.collection(WidgetCollection);
+
+    $scope.addPumbanolla = function() {
+      $scope.underwear.push({size:"pumbanolla"});
     }
-  });
-  Template.widget.helpers({});
+    $scope.addTanga = function() {
+      $scope.underwear.push({size:"tanga"});
+    }
+  }]);
+}
+
+if (Meteor.isServer) {
+  console.log('Testing');
 }

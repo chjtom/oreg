@@ -3,13 +3,13 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> widget}}
+    <div ng-app="oreg" ng-controller="oregCtrl">
+        <div ng-include="'client/firstTemplate.html'"></div>
+        <button class="pumbanolla" ng-click="addPumbanolla()">
+            Pumbanolla
+        </button>
+        <button class="tanga" ng-click="addTanga()">
+            Tanga
+        </button>
+    </div>
 </body>
-
-<template name="widget">
-    <h1>Your Widgets</h1>
-    <button class="createWidget">Create a New widget</button>
-    <button class="pumbanolla">Create a Pumbanölla</button>
-</template>
